@@ -11,6 +11,6 @@ console.log('a =[', b);
 
 console.log('rest =[', rest);
 
-[a, b, ...rest] = [10, 20, 30, 40, 50];
+[a, b, ...rest] = [10, 20, 30, 40, 50]; // '...' 나머지 연산자
 
 console.log(rest);
