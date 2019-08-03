@@ -1,4 +1,6 @@
 import React from 'react';
+import {addPlayer} from "../redux/action";
+import {connect} from "react-redux";
 
 export class AddPlayerForm extends React.Component {
 /*	state = {
@@ -42,3 +44,14 @@ export class AddPlayerForm extends React.Component {
 		);
 	}
 }
+
+// dispatch : 자식이 => 부모에게 통신
+// action을 dispatch하는 평션을 현재의 props로 매핑
+const mapActionToProps  = (dispatch) => ({
+	//왼쪽은 props, 오른쪽은 평션(액션을 디스패치하는 평선)
+	addPlayer: (name) => dispatch(addPlayer(name))
+})
+
+// 커링 평션, Ho-Component
+export default connect(null, mapActionToProps)(AddPlayerForm);
+
