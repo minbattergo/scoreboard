@@ -8,7 +8,7 @@ const action = {
     }
 }
 */
-import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "./actionTypes"; //named import
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER, SEARCH_NAME, SET_ISSORTED} from "./actionTypes"; //named import
 
 export const addPlayer = (name) => ({
     type: ADD_PLAYER,
@@ -26,4 +26,12 @@ export const removePlayer = (id) => ({
     id
 })
 
+export const setIsSorted = (isSorted) => ({
+    type: SET_ISSORTED,
+    isSorted
+})
 
+export const searchName = (keyword) => ({
+    type: SEARCH_NAME,
+    keyword
+})

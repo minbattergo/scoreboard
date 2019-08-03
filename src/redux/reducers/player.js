@@ -1,4 +1,4 @@
-import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER} from "../actionTypes";
+import {ADD_PLAYER, CHANGE_SCORE, REMOVE_PLAYER, SEARCH_NAME, SET_ISSORTED} from "../actionTypes";
 
 const playerInitialState = {
     players: [
@@ -6,8 +6,13 @@ const playerInitialState = {
         {name: 'HONG', score: 0, id: 2},
         {name: 'KIM', score: 0, id: 3},
         {name: 'PARK', score: 0, id: 4},
-    ]
+    ],
+    filteredPlayers:[], //검색된 결과를 보여주는 배열
+    isSorted: false,
+    keyword: ''
 }
+
+playerInitialState.filteredPlayers = playerInitialState.players;
 
 let maxId = 4; //편의상
 
@@ -29,12 +34,23 @@ export const playerReducer = (state = playerInitialState, action) => {
                 }
             })
 
-            return {...state, players}
+            return {...state, players};
 
         case REMOVE_PLAYER:
             players= state.players.filter(player => player.id !== action.id);
 
-            return {...state, players}
+            return {...state, players};
+
+        case SET_ISSORTED:
+            state.isSorted = action.isSorted;
+
+            return {...state};
+        case SEARCH_NAME:
+            state.keyword = action.keyword;
+            //players는 그대로 유지하고 검색된 결과를 보여주는 filteredPlayers를 추가해야 된다.
+            // players = state.players.filter(player => player.name.indexOf(action.keyword) >= 0)
+            const filteredPlayers = state.players.filter(player => player.name.indexOf(action.keyword) >= 0);
+            return {...state, filteredPlayers};
 
         default:
             return state;

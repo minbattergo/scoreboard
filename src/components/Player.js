@@ -20,7 +20,7 @@ export const Player = ({name, score, removePlayer, id, changeScore}) => {
 */
 
 //class compoment
-export class Player extends React.Component {
+export class Player extends React.PureComponent {
 	render() {
 		const {name, score, id, removePlayer } = this.props; //객체 해체 할당
 
@@ -37,6 +37,7 @@ export class Player extends React.Component {
 		);
 	}
 
+/*
 	componentWillReceiveProps(nextProps, nextContext) {
 		//console.log('componentWillReceiveProps [', nextProps);
 	}
@@ -46,6 +47,8 @@ export class Player extends React.Component {
 		return this.props.score !== nextProps.score ? true : false
 
 	}
+*/
+
 }
 
 // dispatch : 자식이 => 부모에게 통신
